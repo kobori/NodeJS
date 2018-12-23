@@ -1,0 +1,49 @@
+aplicação Node JS
+
+1- Instalr o Express JS
+
+Instalar 
+  $ express --view=pug myapp
+Em seguida, instale as dependências:
+  $ cd myapp
+  $ npm install
+
+2- Renomear a aquivo www que fica na pasta bin para server.js e colocar no diretoria principal
+
+3- No arquivo package.json mudar o "start": "nodemon ./bin/www" para "start": "nodemon ./server"
+
+4- No aquivo server.js mudar o var app = require('../app'); para var app = require('./app');
+
+5- Instalar Nunjucks templet engine
+
+Instalar
+  $ npm install nunjucks express-nunjucks --save
+No arquivo app.js 
+  const expressNunjucks = require('express-nunjucks');
+
+  const njk = expressNunjucks(app, {
+    watch: true, //se for verdade, o sistema atualizará automaticamente os modelos quando eles forem alterados no sistema de arquivos.
+    noCache: true //se for verdade, o sistema evitará o uso de um cache e os modelos serão recompilados a cada vez.
+});
+
+6- Intalar o nodemon que reiniciando automaticamente o aplicativo do nó quando as alterações de arquivo no diretório são detectadas.
+  $ npm install --save-dev nodemon
+
+7- Instalar o baco de dado MySQL
+  $ npm install mysql
+
+8- Instalr o Knex, é um construtor de consultas SQL
+criar um arquivo db.js na pasta raiz do projeto
+  var knex = require('knex');
+  var db = knex({
+    client: 'mysql',
+    connection: {
+      host : '127.0.0.1',
+      user : 'root',
+      password : 'your_database_password',
+      database : 'musics'
+    } 
+  });
+
+  module.exports = db;
+
