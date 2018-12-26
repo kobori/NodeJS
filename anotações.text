@@ -47,3 +47,9 @@ criar um arquivo db.js na pasta raiz do projeto
 
   module.exports = db;
 
+9- Usando banco de dados MongoDB
+ $ npm install --save MongoDB
+Instalar o modulo  mongoose
+  $ npm install --save mongoose
+Instalar o modulo bluebird
+  $ npm install --save bluebird
