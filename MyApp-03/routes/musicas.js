@@ -56,7 +56,7 @@ router.delete('/delete/:id', (req, res, next) => {
   const {id} = req.params;
   mongoose.model('Musica').remove({_id: id}).then((musica) => {
     res.redirect('/');
-    },next);
+  },next);
 });
 
 module.exports = router;

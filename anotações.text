@@ -15,7 +15,7 @@ Em seguida, instale as dependências:
 4- Intalar o nodemon que reiniciando automaticamente o aplicativo do nó quando as alterações de arquivo no diretório são detectadas.
   $ npm install --save-dev nodemon
 
-5- No arquivo package.json mudar o "start": "nodemon ./bin/www" para "start": "nodemon ./server"
+5- No arquivo package.json mudar o "start": "nodemon ./bin/www" para "start": "nodemon ./server.js"
 
 6- Instalar Nunjucks templet engine
 Instalar
@@ -49,9 +49,52 @@ criar um arquivo db.js na pasta raiz do projeto
 
   module.exports = db;
 
-9- Usando banco de dados MongoDB
+9- instalar o modulo method-override 
+  $ npm install method-override 
+
+Inportar o modulo no arquuivo app.jp
+  var methodOverride = require('method-override');
+
+Configurar o modulo dentro do arquivo app.js
+  app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}));
+
+
+10- Usando banco de dados MongoDB
  $ npm install --save MongoDB
+
 Instalar o modulo  mongoose
   $ npm install --save mongoose
+
 Instalar o modulo bluebird
   $ npm install --save bluebird
+
+Importar os modulo no app.js, logo abaixo da linha de codigo var methodOverride = require('method-override');
+  var mongoose = require('mongoose')
+  mongoose.Promise = require('bluebird');
+  mongoose.connect('mongodb://localhost/musics');
+
+Criar uma pasta chamada models dentro diretorio da pasta raiz
+Dentro da pasta models criar um arquivo exemplo.js - Este arquivo representara o modelo de dados dos exemplos 
+  var mongoose = require('mongoose');
+  var MusicaSchema = new mongoose.Schema({
+    nome: {
+      type: String,
+      required: true
+    },
+    artista: {
+      type: String,
+      required: true
+    },
+    estrelas: {
+      type: Number,
+      required: true
+    }, 
+  });
+  module.exports = mongoose.model('Musica', MusicaSchema);

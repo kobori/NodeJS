@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<div class="row">
+  <div class="col-md-6">
+      <form action="/" method='post'>
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="nome" placeholder="nome">
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="cidade" placeholder="cidade">
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" name="telefone" id="telefone" placeholder="telefone">
+        </div>
+
+         <button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
+         <a href="/" class="btn btn-lg btn-light">Voltar</a>
+
+      </form>
+  </div>
+</div>
+{% endblock %}
