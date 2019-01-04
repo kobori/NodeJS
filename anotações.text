@@ -98,3 +98,21 @@ Dentro da pasta models criar um arquivo exemplo.js - Este arquivo representara o
     }, 
   });
   module.exports = mongoose.model('Musica', MusicaSchema);
+
+  
+  /////////////////////////////////////////////////////////////////
+
+SESSION
+
+Instalar o session
+  npm install --save express-session
+
+Importar o modulos no app.js
+  var session = require('express-session');
+
+Configurar uma chave de segredo, configurar após a configuração dos módulos do Nunjucks no app.js
+  app.use(session({
+    secret: 'teste sessoes',
+    resave: false,
+    saveUninitialized: false,
+  }));
