@@ -116,3 +116,16 @@ Configurar uma chave de segredo, configurar após a configuração dos módulos 
     resave: false,
     saveUninitialized: false,
   }));
+
+
+
+
+Instalação de módulos
+
+nunjucks - Bibliotecas do Nunjuncks template engine;
+express-nunjuncks - Conexão com Nunjucks template engine;
+express-session - Manipulação de sessões;
+mydql - Acesso ao SGBD MySQL;
+knex - Manipulação de dados oriundos do MySQL;
+method-override - Manipulação de verbos http não tratados por formulários HTMl;
+passport, passport-local - Manipulação de automaticação com úsuario e senha;
