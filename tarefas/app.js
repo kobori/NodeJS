@@ -4,8 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressNunjucks = require('express-nunjucks');
+var session = require('express-session');
+var passport = require('passport');
 var methodOverride = require('method-override');
 
+require('./passport');
 
 var index = require('./routes/tarefas');
 var users = require('./routes/auth');
@@ -43,7 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

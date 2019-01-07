@@ -1,3 +1,4 @@
+
 var authorize = {
 
   isAuth : function(req, res, next){

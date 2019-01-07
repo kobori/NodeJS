@@ -27,5 +27,14 @@ router.get('/register', isNotAuth, (req, res, next) => {
 });
 
 // Rota que acessa apenas por usuários ainda não autendicados 
+router.post('/register', isNotAuth, (req,res,next)=>{
+  db("users").insert(req.body).then((ids) => {
+    passport.authenticate('local')(req, res, function () {
+      res.redirect('/');
+    });
+  },next)
+});
+
+
 
 module.exports = router;
